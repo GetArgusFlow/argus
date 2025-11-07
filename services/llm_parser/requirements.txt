@@ -1,0 +1,16 @@
+# argus/services/llm_parser/requirements.txt
+
+# Core Application
+# FastAPI web framework and server
+fastapi
+uvicorn>=0.23.0
+
+# Logging
+loguru
+
+# Configuration Management
+pydantic-settings
+PyYAML
+
+# LLM Inference
+llama-cpp-python

@@ -1,0 +1,83 @@
+#--------------------------------------------------------------------------
+# Service Configuration
+#--------------------------------------------------------------------------
+service:
+  host: "0.0.0.0"
+  port: 8004
+  log_level: "info"
+  environment: "production"
+
+#--------------------------------------------------------------------------
+# Authentication
+#--------------------------------------------------------------------------
+auth:
+  # This default is used for development.
+  # It will be overridden by the .env file in production.
+  api_key: "default_dev_key"
+
+#--------------------------------------------------------------------------
+# Database Configuration (placeholders)
+#--------------------------------------------------------------------------
+database:
+  host: "db-demo"
+  user: "root"
+  password: "demopassword"
+  name: "demo_matcher_db"
+  port: 3306
+
+#--------------------------------------------------------------------------
+# Model & Index Configuration
+#--------------------------------------------------------------------------
+matcher:
+  # Model settings
+  base_model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  device: "cpu" # Can be "mps" or "cuda" if available
+
+  # Paths (relative to the service root)
+  models_dir: "models"
+  finetuned_model_dir: "models/model_finetuned"
+  faiss_index_path: "models/products.faiss"
+  id_map_path: "models/products_index_ids.npy"
+
+  # Training parameters
+  batch_size: 16
+  epochs: 4
+  
+  # Search & Update parameters
+  top_k_default: 10
+  autosave_every: 100 # Persist index after this many additions
+
+#--------------------------------------------------------------------------
+# Database Queries
+# Define the exact SQL queries the engine will use to fetch data.
+# This provides maximum flexibility to adapt to any database schema.
+#
+# IMPORTANT: Your queries MUST use 'AS' to map your columns to the
+# standard names expected by the engine.
+#
+# Expected columns:
+# - id: The unique product ID (required)
+# - store_id: The store identifier (REQUIRED for filtering)
+# - title: The product title (recommended)
+# - brand: The brand (optional)
+# - contents: The net contents, e.g., "750" (optional)
+# - unit: The unit, e.g., "ml" (optional)
+# - pack: Pack information, e.g., "6-pack" (optional)
+# - colors: Colors, e.g., "rood" (optional)
+# - type: Product type, e.g., "Wijn" (optional)
+# - ean: EAN codes, use "|" as a separator for multiples (optional)
+# - dimensions: Dimensions, e.g., "10x20x30" (optional)
+#--------------------------------------------------------------------------
+#--------------------------------------------------------------------------
+# Database Queries
+# These MUST be overridden in your .env file
+# Provide valid SQL queries tailored to your specific database schema.
+# Use 'AS' to map your columns to the standard names (id, title, brand, etc.).
+# Runtime queries MUST include the ':ids' placeholder.# Query voor fetching product data at runtime.
+# MUST return 'id', 'store_id', and other expected columns.
+# MUST include the placeholder ':ids'.
+#--------------------------------------------------------------------------
+database_queries:
+  training_pairs_query: "SELECT group_id, product_id FROM product_matches"
+  indexing_query: "SELECT product_id AS id, store_id, title, brand, contents, unit, pack, colors, type, ean, dimensions FROM products"
+  product_by_id_query: "SELECT product_id AS id, store_id, title, brand, contents, unit, pack, colors, type, ean, dimensions FROM products WHERE product_id IN :ids"

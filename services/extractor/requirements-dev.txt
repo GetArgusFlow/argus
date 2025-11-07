@@ -1,0 +1,12 @@
+# ArgusProject/argus/services/extractor/requirements-dev.txt
+
+# Include production requirements
+-r requirements.txt
+
+# Development Tools
+deepdiff  # For tests results
+ruff      # For linting and formatting
+pytest    # For running tests
+httpx     # For making requests in tests
+yq        # For parsing YAML in the Makefile during the Docker build
+debugpy>=1.8.0

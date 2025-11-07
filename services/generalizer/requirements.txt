@@ -1,0 +1,9 @@
+transformers
+accelerate
+torch
+llama-cpp-python
+loguru
+fastapi
+uvicorn[standard]
+PyYAML
+pydantic-settings

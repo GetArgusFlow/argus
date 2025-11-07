@@ -1,0 +1,9 @@
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "tools/json_schema_to_grammar.py"
+]

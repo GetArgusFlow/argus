@@ -1,0 +1,42 @@
+# This file is ONLY for the matcher's development environment.
+# It adds a demo database and configures the matcher to use it.
+services:
+  # 1. The new demo database service
+  db-demo:
+    image: mysql:8.0
+    container_name: matcher-demo-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "demopassword"
+      MYSQL_DATABASE: "demo_matcher_db"
+    ports:
+      - "3306:3306" # Expose on host for easy inspection
+    volumes:
+      # This points to the SQL script you'll create in the next step
+      - ./demo.sql:/docker-entrypoint-initdb.d/demo.sql
+    healthcheck:
+      #test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-pdemopassword", "-e", "SELECT 1;"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pdemopassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - argus_network # Connect it to your existing project network
+
+  # 2. Override the 'matcher' service (defined in the main docker-compose.yml)
+  matcher:
+    build:
+      target: development
+    depends_on:
+      db-demo: # Tell the matcher to wait for the demo DB
+        condition: service_healthy
+    environment:
+      # These overrides point the matcher service to the new db-demo container
+      - DATABASE__HOST=db-demo
+      - DATABASE__USER=root
+      - DATABASE__PASSWORD=demopassword
+      - DATABASE__NAME=demo_matcher_db
+      - DATABASE__PORT=3306
+      # Provide the exact SQL queries for the demo schema
+      - DATABASE_QUERIES__TRAINING_PAIRS_QUERY=SELECT group_id, product_id FROM product_matches
+      - DATABASE_QUERIES__INDEXING_QUERY=SELECT product_id AS id, store_id, title, brand, contents, unit, pack, colors, type, ean, dimensions FROM products
+      - DATABASE_QUERIES__PRODUCT_BY_ID_QUERY=SELECT product_id AS id, store_id, title, brand, contents, unit, pack, colors, type, ean, dimensions FROM products WHERE product_id IN :ids

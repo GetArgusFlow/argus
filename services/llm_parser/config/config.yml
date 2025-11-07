@@ -1,0 +1,50 @@
+#--------------------------------------------------------------------------
+# Service Configuration
+# Settings for the web service itself.
+#--------------------------------------------------------------------------
+service:
+  host: "0.0.0.0"
+  port: 8002
+  log_level: "info"
+  log_dir: "logs"
+  environment: "production"
+
+#--------------------------------------------------------------------------
+# Authentication
+#--------------------------------------------------------------------------
+auth:
+  api_key: "default_dev_key"
+  
+#--------------------------------------------------------------------------
+# Large Language Model (LLM) Configuration
+# All settings related to the language model.
+#--------------------------------------------------------------------------
+llm:
+  # Where to find and store the model.
+  source:
+    directory: "models"
+    filename: "Hermes-3-Llama-3.2-3B-Q2_K.gguf"
+    url: "https://huggingface.co/bartowski/Hermes-3-Llama-3.2-3B-GGUF/resolve/main/Hermes-3-Llama-3.2-3B-Q2_K.gguf"
+
+  # Parameters for controlling llama.cpp.
+  params:
+    # Context size for the model.
+    n_ctx: 4096
+    # Number of GPU layers to offload (-1 for all).
+    n_gpu_layers: 0
+    # Maximum number of tokens to generate.
+    max_tokens: 2048
+    # Sampling temperature (0.0 for deterministic output).
+    temperature: 0.0
+
+#--------------------------------------------------------------------------
+# External Tools Configuration
+# URLs to external scripts and tools.
+#--------------------------------------------------------------------------
+tools:
+  grammar_script_url: "https://raw.githubusercontent.com/ggerganov/llama.cpp/master/examples/json_schema_to_grammar.py"
+
+#--------------------------------------------------------------------------
+# Data directory
+#--------------------------------------------------------------------------
+data_dir: "data"

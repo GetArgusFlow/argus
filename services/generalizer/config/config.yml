@@ -1,0 +1,43 @@
+#--------------------------------------------------------------------------
+# Service Configuration
+#--------------------------------------------------------------------------
+service:
+  host: "0.0.0.0"
+  port: 8003
+  log_level: "info"
+  environment: "production"
+  default_language: "en"
+
+#--------------------------------------------------------------------------
+# Authentication
+#--------------------------------------------------------------------------
+auth:
+  api_key: "default_dev_key"
+
+#--------------------------------------------------------------------------
+# Large Language Model (LLM) Configuration
+#--------------------------------------------------------------------------
+llm:
+  source:
+    directory: "models" # Relative path to the shared models folder
+    filename: "Hermes-3-Llama-3.2-3B-Q2_K.gguf"
+    url: "https://huggingface.co/bartowski/Hermes-3-Llama-3.2-3B-GGUF/resolve/main/Hermes-3-Llama-3.2-3B-Q2_K.gguf"
+
+  params:
+    n_ctx: 8192
+    n_gpu_layers: -1 # Use GPU if available
+    max_tokens: 512
+    temperature: 0.0
+    n_batch: 512
+    verbose: false
+
+#--------------------------------------------------------------------------
+# External Tools Configuration
+#--------------------------------------------------------------------------
+tools:
+  grammar_script_url: "https://raw.githubusercontent.com/ggerganov/llama.cpp/master/examples/json_schema_to_grammar.py"
+
+#--------------------------------------------------------------------------
+# Data directory (relative to the service root)
+#--------------------------------------------------------------------------
+data_dir: "data"

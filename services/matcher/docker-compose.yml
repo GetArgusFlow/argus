@@ -1,0 +1,25 @@
+# argus/services/matcher/docker-compose.yml
+
+services:
+  matcher:
+    build:
+      context: ../..
+      dockerfile: services/matcher/Dockerfile
+      target: development
+    container_name: argus-matcher
+    ports:
+      - "8004:8004"
+      - "5676:5676"
+    volumes:
+      - ./app:/app/app
+      - ../../logs:/app/logs
+      - ../../tools:/app/tools
+      - ../../models:/app/models
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - argus_network
+
+networks:
+  argus_network:
+    external: true

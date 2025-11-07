@@ -1,0 +1,7 @@
+# ArgusProject/argus/services/llm_parser/docker-compose.prod.yml
+
+services:
+  llm_parser:
+    build:
+      target: production
+    volumes: []

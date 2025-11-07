@@ -1,0 +1,7 @@
+# ArgusProject/argus/services/generalizer/docker-compose.prod.yml
+
+services:
+  generalizer:
+    build:
+      target: production
+    volumes: []

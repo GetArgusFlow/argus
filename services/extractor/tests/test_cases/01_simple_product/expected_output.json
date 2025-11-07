@@ -1,0 +1,14 @@
+{
+  "availability": null,
+  "brand": "BrandCo",
+  "breadcrumbs": null,
+  "description": "The best widget you will ever buy. High quality and durable.",
+  "image": null,
+  "json_ld": null,
+  "open_graph": {
+    "title": "Awesome Test Widget",
+    "price:amount": "99.95"
+  },
+  "price": 99.95,
+  "title": "Awesome Test Widget"
+}

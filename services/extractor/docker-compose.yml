@@ -1,0 +1,24 @@
+# argus/services/extractor/docker-compose.yml
+
+services:
+  extractor:
+    build:
+      context: ../..
+      dockerfile: services/extractor/Dockerfile
+      target: development
+    container_name: argus-extractor
+    ports:
+      - "8001:8001"
+      - "5678:5678"
+    volumes:
+      - ./app:/app/app
+      - ../../logs:/app/logs
+      - ../../tools:/app/tools
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - argus_network
+
+networks:
+  argus_network:
+    external: true

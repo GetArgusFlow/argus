@@ -1,0 +1,102 @@
+#--------------------------------------------------------------------------
+# Main Configuration for the Extractor Service
+#--------------------------------------------------------------------------
+
+# Service-level settings
+service:
+  host: "0.0.0.0"
+  port: 8001
+  log_level: "info"
+  log_dir: "logs"
+  environment: "production"
+  llm_parser_url: "http://argus-llm-parser:8002/api/v1/parse"
+
+auth:
+  api_key: "default_dev_key"
+
+language:
+  default: "en"
+
+models:
+  # The name of the spaCy model to download and use
+  nlp: "nl_core_news_lg"
+
+field_aliases:
+  brand:
+    - "merk"
+    - "fabrikant"
+    - "manufacturer"
+    - "producent"
+    - "leverancier"
+    - "maker"
+    - "vendor"
+    - "merknaam"
+    - "product_brand"
+  ean:
+    - "ean"
+    - "gtin"
+    - "streepjescode"
+    - "barcode"
+  sku:
+    - "sku"
+    - "artikelnummer"
+    - "productcode"
+    - "partnummer"
+    - "modelnummer"
+    - "itemnummer"
+    - "asin"
+    - "mpn"
+
+# HTML preprocessing settings
+html_preprocessing:
+  # CSS selectors to identify and remove noise from the HTML before analysis
+  noise_selectors:
+    - 'header'
+    - 'footer'
+    - 'aside'
+    - '#site-header'
+    - '#main-footer'
+    - '#sidebar'
+    - '.sidebar'
+    - '.site-info'
+    - '.copyright'
+    - '.related-products'
+    - '.upsells'
+    - '.cross-sells'
+    - '.recommendations'
+    - '.also-bought'
+    - '.customer-views'
+    - '.similar-items'
+    - '.other-products'
+    - '.widget-area'
+    - '.promo-banner'
+    - '.newsletter-signup'
+    - '.cookie-consent'
+    - '.social-share-buttons'
+    - '.back-to-top'
+    - '[class*="breadcrumb"]'
+    - '[itemtype="https://schema.org/BreadcrumbList"]'
+    - '[role="complementary"]'
+    - '.review-form'
+    - '.review-pagination'
+    - '.comment-form'
+    - '.comment-navigation'
+    - '#comments'
+    - '.comments-area'
+    - '.customer-reviews__header'
+    - '.pagination'
+    - '.pager'
+    - '.ad'
+    - '.advertisement'
+    - '.modal'
+    - '.overlay'
+    - '.hidden'
+    - '.visuallyhidden'
+    - '.print-only'
+    - '[aria-hidden="true"]'
+    - '[style*="display: none"]'
+    - '[style*="visibility: hidden"]'
+
+
+
+

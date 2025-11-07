@@ -1,0 +1,5 @@
+# argus/services/generalizer/docker-compose.test.yml
+
+services:
+  generalizer:
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8003

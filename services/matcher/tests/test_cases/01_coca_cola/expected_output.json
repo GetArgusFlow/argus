@@ -1,0 +1,40 @@
+{
+    "query": "coca",
+    "matches": [
+        [
+            2,
+            0.48642870783805847,
+            "Coke Classic 1,5L Fles | brand: Coca-Cola | 1500 ml | type: Frisdrank"
+        ],
+        [
+            1,
+            0.4619511365890503,
+            "Coca-Cola Classic | brand: Coca-Cola | 1500 ml | type: Frisdrank"
+        ],
+        [
+            3,
+            0.325620174407959,
+            "Pepsi Max | brand: Pepsi | 1500 ml | type: Frisdrank"
+        ],
+        [
+            6,
+            0.1627408266067505,
+            "Gallo Family Merlot | brand: Gallo | 750 ml | colors: rood | type: Wijn"
+        ],
+        [
+            5,
+            0.15668153762817383,
+            "Gallo Chardonnay 750ml | brand: Gallo | 750 ml | colors: wit | type: Wijn"
+        ],
+        [
+            7,
+            0.15336905419826508,
+            "Lays Paprika Chips | brand: Lays | 200 g | type: Chips"
+        ],
+        [
+            4,
+            0.1412222981452942,
+            "Gallo Family Chardonnay | brand: Gallo | 750 ml | colors: wit | type: Wijn"
+        ]
+    ]
+}

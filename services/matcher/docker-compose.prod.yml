@@ -1,0 +1,7 @@
+# ArgusProject/argus/services/matcher/docker-compose.prod.yml
+
+services:
+  matcher:
+    build:
+      target: production
+    volumes: []

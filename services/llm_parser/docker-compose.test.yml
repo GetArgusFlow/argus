@@ -1,0 +1,5 @@
+# argus/services/llm_parser/docker-compose.test.yml
+
+services:
+  llm_parser:
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8002

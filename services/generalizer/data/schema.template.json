@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "brand": {"type": ["string", "null"]},
+    "brand_type": {"type": "string", "enum": ["premium", "private", "unknown"]},
+    "product_type": {"type": ["string", "null"]},
+    "price": {"type": ["number", "null"]},
+    "material": {"type": ["string", "null"]},
+    "color": {"type": ["string", "null"]},
+    "height": {"type": ["number", "null"]},
+    "width": {"type": ["number", "null"]},
+    "length": {"type": ["number", "null"]},
+    "dimensions": {"type": ["string", "null"]},
+    "weight": {"type": ["number", "null"]},
+    "net_volume": {"type": ["number", "null"]},
+    "net_volume_unit": {"type": ["string", "null"]},
+    "capacity": {"type": ["string", "null"]},
+    "area": {"type": ["number", "null"]},
+    "specifications": {"type": ["string", "null"]},
+    "item_count": {"type": ["integer", "null"], "default": 1},
+    "item_unit": {"type": ["string", "null"]},
+    "ean": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false,
+  "required": ["brand", "brand_type", "product_type", "price", "material", "color", "height", "width", "length", "dimensions", "weight", "net_volume", "net_volume_unit", "capacity", "area", "specifications", "item_count", "item_unit", "ean"]
+}

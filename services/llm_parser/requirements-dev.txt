@@ -1,0 +1,11 @@
+# requirements-dev.txt
+
+# Include production requirements
+-r requirements.txt
+
+# Development, Testing & Build Tools
+ruff      # For linting and formatting
+pytest    # For running tests
+httpx     # For making requests in tests
+yq        # For parsing YAML in the Makefile during the Docker build
+debugpy>=1.8.0

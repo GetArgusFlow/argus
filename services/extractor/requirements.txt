@@ -1,0 +1,24 @@
+# ArgusProject/argus/services/extractor/requirements.txt
+
+# Core Application
+fastapi
+uvicorn[standard]
+loguru
+pydantic-settings
+PyYAML
+
+# HTTP Client
+httpx
+playwright
+
+# HTML & Data Processing
+beautifulsoup4
+lxml
+fuzzywuzzy[speedup]
+tenacity
+
+# Language detection
+langdetect
+
+# NLP Libraries
+spacy

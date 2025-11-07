@@ -1,0 +1,31 @@
+{
+  "availability": "In Stock",
+  "brand": "Logitech",
+  "breadcrumbs": null,
+  "description": "Ervaar ultieme precisie en comfort met de MX Master 3S. Stille klikken en een 8K DPI-sensor voor elke ondergrond.",
+  "image": "https://m.media-amazon.com/images/I/61x-33L3+qL._AC_SL1500_.jpg",
+  "json_ld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Logitech MX Master 3S Performance Draadloze Muis, Ergonomisch, 8K DPI - Grafiet",
+      "image": "https://m.media-amazon.com/images/I/61x-33L3+qL._AC_SL1500_.jpg",
+      "description": "Ervaar ultieme precisie en comfort met de MX Master 3S. Stille klikken en een 8K DPI-sensor voor elke ondergrond.",
+      "sku": "910-006560",
+      "gtin13": "5099206103726",
+      "brand": {
+        "@type": "Brand",
+        "name": "Logitech"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": "20.99",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ],
+  "open_graph": null,
+  "price": 20.99,
+  "title": "Logitech MX Master 3S Performance Draadloze Muis, Ergonomisch, 8K DPI - Grafiet"
+}

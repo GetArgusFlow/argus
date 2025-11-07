@@ -1,0 +1,25 @@
+# argus/services/llm_parser/docker-compose.yml
+
+services:
+  llm_parser:
+    build:
+      context: ../..
+      dockerfile: services/llm_parser/Dockerfile
+      target: development
+    container_name: argus-llm-parser
+    ports:
+      - "8002:8002"
+      - "5679:5679"
+    volumes:
+      - ./app:/app/app
+      - ../../logs:/app/logs
+      - ../../tools:/app/tools
+      - ../../models:/app/models
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - argus_network
+
+networks:
+  argus_network:
+    external: true

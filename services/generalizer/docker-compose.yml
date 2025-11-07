@@ -1,0 +1,25 @@
+# argus/services/generalizer/docker-compose.yml
+
+services:
+  generalizer:
+    build:
+      context: ../..
+      dockerfile: services/generalizer/Dockerfile
+      target: development
+    container_name: argus-generalizer
+    ports:
+      - "8003:8003"
+      - "5677:5677"
+    volumes:
+      - ./app:/app/app
+      - ../../logs:/app/logs
+      - ../../tools:/app/tools
+      - ../../models:/app/models
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - argus_network
+
+networks:
+  argus_network:
+    external: true

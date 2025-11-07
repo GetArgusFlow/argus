@@ -1,0 +1,7 @@
+# ArgusProject/argus/services/extractor/docker-compose.prod.yml
+
+services:
+  extractor:
+    build:
+      target: production
+    volumes: []
